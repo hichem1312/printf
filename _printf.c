@@ -15,36 +15,35 @@ int print_number(int n)
 	}
 	x = n;
 	if (x == -2147483648)
-	{
-		x = x + 1}
+	{x = x + 1;
+	}
 	if (n < 0)
-	{
-		x = -x;
+	{x = -x;
 		putchar('-');
-		s += 1}
+		s += 1;
+	}
 	while (r < 1000000000 && (x - (r * 10) >= 0))
-	{
-		r = r * 10}
+	{r = r * 10;
+	}
 	while (x > 0)
-	{
-		k = x / r;
+	{k = x / r;
 		x = x % r;
 		r /= 10;
 		if (x < r)
-		{
-			putchar(k + 48);
+		{putchar(k + 48);
 			 s += 1;
 			putchar(48);
 			 s += 1;
-			r /= 10}
+			r /= 10;
+		}
 		else if (n == -2147483648 && k == 7 && r == 0)
-		{
-			putchar(k + 49);
-			 s += 1}
+		{putchar(k + 49);
+			 s += 1;
+		}
 		else
-		{
-			putchar(k + 48);
-			 s += 1}
+		{putchar(k + 48);
+			 s += 1;
+		}
 	}
 	return (s);
 }
