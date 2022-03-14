@@ -118,6 +118,11 @@ int _printf(const char *format, ...)
 				ch = va_arg(l, char*);
 				length += pr_string(ch);
 			}
+			if (format[i + 1] == 'i')
+			{
+				j =  va_arg(l, int);
+                                length += print_number(j);
+			}
 			if (format[i + 1] == '%')
 			{
 				putchar('%');
