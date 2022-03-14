@@ -6,12 +6,13 @@
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
  */
-void print_number(int n)
-{int x, k, r = 1;
+int print_number(int n)
+{int x, k, r = 1, s = 0;
 
 	if (n == 0)
 	{
-		_putchar(48);
+		putchar(48);
+		s += 1;
 		return;
 	}
 	x = n;
@@ -22,7 +23,8 @@ void print_number(int n)
 	if (n < 0)
 	{
 		x = -x;
-		_putchar('-');
+		putchar('-');
+		s += 1;
 	}
 	while (r < 1000000000 && (x - (r * 10) >= 0))
 	{
@@ -35,17 +37,22 @@ void print_number(int n)
 		r /= 10;
 		if (x < r)
 		{
-			_putchar(k + 48);
-			_putchar(48);
+			putchar(k + 48);
+			 s += 1;
+			putchar(48);
+			 s += 1;
 			r /= 10;
 		}
 		else if (n == -2147483648 && k == 7 && r == 0)
 		{
-			_putchar(k + 49);
+			putchar(k + 49);
+			 s += 1;
 		}
 		else
 		{
-			_putchar(k + 48);
+			putchar(k + 48);
+			 s += 1;
 		}
 	}
+	return (s);
 }
