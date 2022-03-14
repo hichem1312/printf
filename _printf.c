@@ -5,9 +5,9 @@
  *@l: lx
  *Return: char
  */
-int pr_char(va_list l)
+int pr_char(char c)
 {
-	_putchar(va_arg(l, int));
+	putchar(c);
 	return (1);
 }
 /**
@@ -15,28 +15,14 @@ int pr_char(va_list l)
  *@l: lx
  *Return: string
  */
-int pr_string(va_list l)
+int pr_string(char *ch)
 {
 	int i;
-	char *ch;
-	ch = va_arg(l, char *);
 	if (ch == NULL)
 		return(0);
 	for (i = 0; ch[i] != '\0'; i++)
-	{
-		_putchar(ch[i]);
-	}
+		putchar(ch[i]);
 	return (i);
-}
-/**
- *pr_prs - prc
- *@l : la
- *Return: char
- */
-int pr_prs(va_list l)
-{
-	(void)l;
-	return (write(1, "%", 1));
 }
 /**
  * _printf - pr
@@ -44,13 +30,47 @@ int pr_prs(va_list l)
  * */
 int _printf(const char *format, ...)
 {
-	fs tab[] = {
-	{'c', pr_char}, {'s', pr_string}
-	{'d', print_number}, {'i', print_number}
-	{'%', pr_prs}};
-	int i, j;
+	int i, j, length = 0;
+	char c;
+	char *ch;
 	va_list l;
-	va_start(l, format);
 	i = 0;
-	j = 0;
+	if (format == NULL)
+		return(-1);
+	va_start(l, format);
+	while (format[i])
+	{
+		if (format[i] != '%')
+		{
+			putchar(format[i]);
+			length += 1;
+		}
+		else
+		{
+			if (format[i] == 'd')
+			{
+				j = va_arg(l, int);
+				length += print_number(j);
+			}
+			if (format[i] == 'c')
+			{
+				c = va_arg(l, int);
+				length += pr_char(c);
+			}
+			if (format[i] == 's')
+			{
+				ch = va_arg(l, char*);
+				length += pr_string(ch);
+			}
+			if (format[i] == '%')
+			{
+				putchar('%');
+				length += 1;
+			}
+			i++;
+		}
+		i++;
+	}
+	putchar ('\n');
+	return (length);
 }
