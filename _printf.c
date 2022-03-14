@@ -9,26 +9,22 @@ int print_number(int n)
 {int x, k, r = 1, s = 0;
 
 	if (n == 0)
-	{
-		putchar(48);
+	{putchar(48);
 		s += 1;
 		return (s);
 	}
 	x = n;
 	if (x == -2147483648)
 	{
-		x = x + 1;
-	}
+		x = x + 1}
 	if (n < 0)
 	{
 		x = -x;
 		putchar('-');
-		s += 1;
-	}
+		s += 1}
 	while (r < 1000000000 && (x - (r * 10) >= 0))
 	{
-		r = r * 10;
-	}
+		r = r * 10}
 	while (x > 0)
 	{
 		k = x / r;
@@ -40,24 +36,21 @@ int print_number(int n)
 			 s += 1;
 			putchar(48);
 			 s += 1;
-			r /= 10;
-		}
+			r /= 10}
 		else if (n == -2147483648 && k == 7 && r == 0)
 		{
 			putchar(k + 49);
-			 s += 1;
-		}
+			 s += 1}
 		else
 		{
 			putchar(k + 48);
-			 s += 1;
-		}
+			 s += 1}
 	}
 	return (s);
 }
 /**
  *pr_char - pr
- *@l: lx
+ *@c: char
  *Return: char
  */
 int pr_char(char c)
@@ -67,64 +60,59 @@ int pr_char(char c)
 }
 /**
  *pr_string - prs
- *@l: lx
+ *@ch: str
  *Return: string
  */
 int pr_string(char *ch)
 {
 	int i;
+
 	if (ch == NULL)
-		return(0);
+		return (0);
 	for (i = 0; ch[i] != '\0'; i++)
 		putchar(ch[i]);
 	return (i);
 }
 /**
- * _printf - pr
- * @format: input
- * */
+ *_printf - print any thing
+ *@format: input
+ *Return: int
+ */
 int _printf(const char *format, ...)
-{
-	int i, j, length = 0;
+{int i = 0, j, length = 0;
 	char c;
 	char *ch;
 	va_list l;
-	i = 0;
+
 	if (format == NULL)
-		return(-1);
+		return (-1);
 	va_start(l, format);
 	while (format[i])
 	{
 		if (format[i] != '%')
-		{
-			putchar(format[i]);
+		{putchar(format[i]);
 			length += 1;
 		}
 		else
 		{
 			if (format[i + 1] == 'd')
-			{
-				j = va_arg(l, int);
+			{j = va_arg(l, int);
 				length += print_number(j);
 			}
 			if (format[i + 1] == 'c')
-			{
-				c = va_arg(l, int);
+			{c = va_arg(l, int);
 				length += pr_char(c);
 			}
 			if (format[i + 1] == 's')
-			{
-				ch = va_arg(l, char*);
+			{ch = va_arg(l, char*);
 				length += pr_string(ch);
 			}
 			if (format[i + 1] == 'i')
-			{
-				j =  va_arg(l, int);
-                                length += print_number(j);
+			{j =  va_arg(l, int);
+				length += print_number(j);
 			}
 			if (format[i + 1] == '%')
-			{
-				putchar('%');
+			{putchar('%');
 				length += 1;
 			}
 			i++;
