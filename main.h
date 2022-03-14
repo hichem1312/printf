@@ -8,9 +8,6 @@
 #include <stdlib.h>
 
 int _printf(const char *format, ...);
-int pr_char(char c);
-int pr_string(char *ch);
 int print_number(int n);
-int _putchar(char c);
 
 #endif
