@@ -5,6 +5,7 @@
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
  */
+
 int print_number(int n)
 {int x, k, r = 1, s = 0;
 
@@ -30,16 +31,19 @@ int print_number(int n)
 		x = x % r;
 		r /= 10;
 		if (x < r)
+
 		{putchar(k + 48);
 			 s += 1;
 			putchar(48);
 			 s += 1;
 			r /= 10;
 		}
+
 		else if (n == -2147483648 && k == 7 && r == 0)
 		{putchar(k + 49);
 			 s += 1;
 		}
+
 		else
 		{putchar(k + 48);
 			 s += 1;
