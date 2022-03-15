@@ -79,11 +79,10 @@ int pr_string(char *ch)
  */
 int _printf(const char *format, ...)
 {int i = 0, j, length = 0;
-	char c;
-	char *ch;
+	char c, *ch;
 	va_list l;
 
-	if (format == NULL)
+	if (format == NULL || format[i] == '\0')
 		return (-1);
 	va_start(l, format);
 	while (format[i])
@@ -119,6 +118,5 @@ int _printf(const char *format, ...)
 			i++;
 		}
 		i++;
-	}
-	return (length);
-}
+	va_end(l); }
+	return (length); }
