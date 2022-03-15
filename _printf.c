@@ -104,8 +104,6 @@ int _printf(const char *format, ...)
 			}
 			if (format[i + 1] == 's')
 			{ch = va_arg(l, char*);
-				if (!ch)
-					ch ="(null)";
 				length += pr_string(ch);
 			}
 			if (format[i + 1] == 'i')
