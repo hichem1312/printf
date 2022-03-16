@@ -82,7 +82,7 @@ int _printf(const char *format, ...)
 	char c, *ch;
 	va_list l;
 
-	if (format == NULL || format[i] == '\0')
+	if (format == NULL)
 		return (-1);
 	va_start(l, format);
 	while (format[i])
@@ -93,6 +93,8 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
+			if (format[i + 1] == '\0')
+				return (-1);
 			if (format[i + 1] == 'd')
 			{j = va_arg(l, int);
 				length += print_number(j);
