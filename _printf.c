@@ -117,12 +117,6 @@ int _printf(const char *format, ...)
 			{putchar('%');
 				length += 1;
 			}
-			else
-			{
-				putchar('%');
-				putchar(format[i + 1]);
-				length += 2;
-			}
 			i++;
 		}
 		i++;
